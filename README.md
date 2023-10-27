@@ -15,7 +15,7 @@ To use this github action in your workflow, add a step like this:
 | Name | Type | Description | Requried? | Default |
 | --- | --- | --- | --- | --- |
 | `ARGO_URL` | String | The URL endpoint where your Argo Workflows instance is hosted. Example: `https://<your_url>.com/argo`. | **Yes** | N/A | 
-| `reaction_NAME` | Number  | Number of positive comment reactions required to mark as an answer. (Ex. `3`, `10`) Positive emoji reactions are: `["+1", "LAUGH", "HEART", "HOORAY", "ROCKET"]` | **No** | `0` |
+| `ARGO_TEMPLATE` | String  | Number of positive comment reactions required to mark as an answer. (Ex. `3`, `10`) Positive emoji reactions are: `["+1", "LAUGH", "HEART", "HOORAY", "ROCKET"]` | **No** | `0` |
 
 
 
