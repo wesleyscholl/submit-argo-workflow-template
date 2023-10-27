@@ -19,7 +19,7 @@ To use this github action in your workflow, add a step like this:
 | `ARGO_TOKEN` | String | The Argo Bearer Token which is passed in request authorization header. Example: `Authorization: Bearer Token v2:eyop...lrch` If your argo workflows server is configured with token authorization, a token is required to use this action. | **No** | N/A | 
 | `ARGO_NAMESPACE` | String | The Argo namespace where your workflow template is hosted. Example: `<your-argo-namespace>` If your argo workflows server does not have a configured namespace the default is `argo`. | **No** | `argo` | 
 | `ARGO_ENTRYPOINT` | String | The entrypoint for your Argo Workflow Template. Example: `<your_entrypoint>` | **No** | `default` |
-| `ARGO_PARAMETERS` | Array[String] | An array of parameter strings to be passes to the Argo Workflows Template. Example: `["param1=hello", "param2=123"]` | **No** | N/A |
+| `ARGO_PARAMETERS` | Array[String] | An array of parameter strings to be passes to the Argo Workflows Template. Example: `["param1=hello", "param2=123"]` Syntax: ["<key>=<value>"] | **No** | N/A |
 
 
 https://<your-url>.com/argo/api/v1/workflows/<your-namespace>/submit
