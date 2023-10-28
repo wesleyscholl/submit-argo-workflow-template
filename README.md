@@ -22,9 +22,6 @@ To use this github action in your workflow, add a step like this:
 | `ARGO_PARAMETERS` | Array[String] | An array of parameter strings to be passes to the Argo Workflows Template. Example: `["param1=hello", "param2=123"]` Syntax: `["<key>=<value>"]` | **No** | N/A |
 
 
-https://<your-url>.com/argo/api/v1/workflows/<your-namespace>/submit
-
-
 ## Request Body: JSON
 ```json
 {                              
