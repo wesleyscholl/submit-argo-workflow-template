@@ -10,6 +10,27 @@ When triggered, this GitHub action submits an existing Argo workflow template.
 
 To use this github action in your workflow, add a step like this:
 
+```yaml
+      - name: Run Submit Argo Workflow Template
+        id: submitworkflow
+        uses: konjoinfinity/mark-discussion-comment-answer@v1.0.x
+        with:
+          GH_TOKEN: "${{ secrets.DISCUSS_TOKEN }}" # PAT required for private repos
+          reaction_threshold: 3 # Number of reactions required to mark a comment as the answer   
+          
+```     
+
+##### Example Output
+
+```json
+{
+  markDiscussionCommentAsAnswer: {
+    clientMutationId: '1234',
+    discussion: { id: 'D_kwDOKczwv84AV0aF' }
+  }
+}
+```
+
 ## Inputs
 
 | Name | Type | Description | Requried? | Default |
