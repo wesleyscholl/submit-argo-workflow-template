@@ -1,6 +1,6 @@
-# Submit Argo Workflow Template
+# Submit Argo Workflow Template 🗯️➡️🐙
 
-## Submit an Argo workflow template from GitHub 🗯️➡️🐙
+## Submit an Argo workflow template from GitHub
 
 ## About
 
@@ -13,11 +13,11 @@ To use this github action in your workflow, add a step like this:
 ```yaml
       - name: Run Submit Argo Workflow Template
         id: submitworkflow
-        uses: konjoinfinity/mark-discussion-comment-answer@v1.0.x
+        uses: konjoinfinity/submit-argo-workflow-template@v1.0.x
         with:
-          GH_TOKEN: "${{ secrets.DISCUSS_TOKEN }}" # PAT required for private repos
-          reaction_threshold: 3 # Number of reactions required to mark a comment as the answer   
-          
+          ARGO_URL: "https://localhost:2746" # Local environment example, or use your deployed argo workflow server url.
+          ARGO_TEMPLATE: "my-argo-workflow" # The name of your argo workflow template to submit.
+          ARGO_NAMESPACE: "my-argo-namespace" # The argo namespace (kubernetes namespace).
 ```     
 
 ##### Example Output
