@@ -25,10 +25,8 @@ To use this github action in your workflow, add a step like this:
 
 ```json
 {
-  "markDiscussionCommentAsAnswer": {
-    "clientMutationId": "1234",
-    "discussion": { "id": "D_kwDOKczwv84AV0aF" }
-  }
+  "workflowName": "new-workflow",
+  "namespace": "argo"
 }
 ```
 
