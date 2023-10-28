@@ -18,6 +18,7 @@ To use this github action in your workflow, add a step like this:
           ARGO_URL: "https://localhost:2746" # Local environment example, or use your deployed argo workflow server url.
           ARGO_TEMPLATE: "my-argo-workflow" # The name of your argo workflow template to submit.
           ARGO_NAMESPACE: "my-argo-namespace" # The argo namespace (kubernetes namespace).
+          ARGO_TOKEN: "my-argo-token" 
 ```     
 
 ##### Example Output
