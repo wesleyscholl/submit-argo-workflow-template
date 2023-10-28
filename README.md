@@ -24,11 +24,9 @@ To use this github action in your workflow, add a step like this:
 
 https://<your-url>.com/argo/api/v1/workflows/<your-namespace>/submit
 
-Method: POST
 
-Authorization: Bearer Token v2:ey...
-
-Body: Raw - JSON
+## Request Body: JSON
+```json
 {                              
     "namespace": "<namespace-name>",
     "resourceKind": "WorkflowTemplate",
@@ -39,4 +37,5 @@ Body: Raw - JSON
         "parameters": ["param1=hello", "param2=123"]
     }
 }
+```
 
