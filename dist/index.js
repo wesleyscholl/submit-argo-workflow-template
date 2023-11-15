@@ -40,7 +40,7 @@ function run() {
             resourceName: argoTemplate,
             submitOptions: {
                 entryPoint: argoEntrypoint,
-                parameters: [argoParameter1, argoParameter2]
+                parameters: [argoParameter1, argoParameter2],
             },
         }, { httpsAgent })
             .then(function (response) {

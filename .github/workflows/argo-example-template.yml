@@ -1,0 +1,27 @@
+metadata:
+  name: hello-world
+  generateName: hello-world-
+  namespace: default
+spec:
+  templates:
+    - name: whalesay
+      inputs:
+        parameters:
+          - name: param1
+            value: '{{workflow.parameters.param1}}'
+          - name: param2
+            value: '{{workflow.parameters.param2}}'
+      container:
+        name: ''
+        image: docker/whalesay:latest
+        command:
+          - cowsay
+        args:
+          - hello world
+          - '{{ inputs.parameters.param1 }}'
+          - '{{ inputs.parameters.param2 }}'
+  entrypoint: whalesay
+  arguments:
+    parameters:
+      - name: param1
+      - name: param2
