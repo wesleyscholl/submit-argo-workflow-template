@@ -2,6 +2,8 @@
 
 #### A GitHub Action for Submitting Argo Workflow Templates
 
+[![Tests](https://img.shields.io/badge/Tests-Pass-gree.svg?logo=github&colorA=24292e)](https://github.com/wesleyscholl/submit-argo-workflow-template) [![Code Style: prettier](https://img.shields.io/badge/Code_Style-Prettier-ff69b4.svg?logo=prettier&colorA=24292e&logoColor=white)](https://github.com/prettier/prettier) [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Create%20Discussion%20Comment-blue.svg?colorA=24292e&colorB=0366d6&style=flat&longCache=true&logo=github)](https://github.com/marketplace/actions/)
+
 ## About 📃
 
 When triggered, this GitHub action submits an existing Argo workflow template.
