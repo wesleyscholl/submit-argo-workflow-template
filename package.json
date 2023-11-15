@@ -13,7 +13,14 @@
     "type": "git",
     "url": "git+https://github.com/wesleyscholl/submit-argo-workflow-template.git"
   },
-  "keywords": ["github", "argo", "argo-workflows", "workflows", "actions", "github-actions"],
+  "keywords": [
+    "github",
+    "argo",
+    "argo-workflows",
+    "workflows",
+    "actions",
+    "github-actions"
+  ],
   "author": "wesley scholl",
   "license": "MIT",
   "bugs": {
@@ -42,6 +49,7 @@
     "@actions/core": "^1.10.1",
     "@actions/github": "^5.1.1",
     "@octokit/action": "^6.0.5",
-    "@vercel/ncc": "^0.38.0"
+    "@vercel/ncc": "^0.38.0",
+    "axios": "^1.6.2"
   }
 }

@@ -22,21 +22,24 @@ beforeEach(() => {
 test("run submit argo workflow", async () => {
   // Mock the input values
   await mockedGetInput.mockReturnValueOnce("https://localhost:2746");
-  await mockedGetInput.mockReturnValueOnce("my-argo-workflow");
-  await mockedGetInput.mockReturnValueOnce("my-argo-namespace");
+  await mockedGetInput.mockReturnValueOnce("hello-world");
   await mockedGetInput.mockReturnValueOnce("eyop...lrch");
-  await mockedGetInput.mockReturnValueOnce("my-entrypoint");
-  await mockedGetInput.mockReturnValueOnce('["param1=hello", "param2=123"]');
+  await mockedGetInput.mockReturnValueOnce("default");
+  await mockedGetInput.mockReturnValueOnce("whalesay");
+  await mockedGetInput.mockReturnValueOnce("param1=hello");
+  await mockedGetInput.mockReturnValueOnce("param2=123");
 
   // Run the `run` function
   await run();
 
   // Assertions
-  await expect(mockedGetInput).toHaveBeenCalledTimes(6);
-  await expect(mockedSetOutput).toHaveBeenCalledWith("argoEntrypoint", "my-entrypoint");
-  await expect(mockedSetOutput).toHaveBeenCalledWith("argoNamespace", "eyop...lrch");
-  await expect(mockedSetOutput).toHaveBeenCalledWith("argoParameters", '["param1=hello", "param2=123"]');
-  await expect(mockedSetOutput).toHaveBeenCalledWith("argoTemplate", "my-argo-workflow");
-  await expect(mockedSetOutput).toHaveBeenCalledWith("argoToken", "my-argo-namespace");
+  await expect(mockedGetInput).toHaveBeenCalledTimes(7);
+  await expect(mockedSetOutput).toHaveBeenCalledTimes(8);
   await expect(mockedSetOutput).toHaveBeenCalledWith("argoUrl", "https://localhost:2746");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoTemplate", "hello-world");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoToken", "eyop...lrch");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoNamespace", "default");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoEntrypoint", "whalesay");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoParameter1", "param1=hello");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoParameter2", "param2=123");
 });
