@@ -1,6 +1,6 @@
 # Submit Argo Workflow Template 🗯️➡️🐙
 
-## Submit an Argo workflow template from GitHub
+#### Submit an Argo workflow template from GitHub
 
 ## About
 
@@ -19,6 +19,9 @@ To use this github action in your workflow, add a step like this:
           ARGO_TEMPLATE: "my-argo-workflow" # The name of your argo workflow template to submit.
           ARGO_NAMESPACE: "my-argo-namespace" # The argo namespace (kubernetes namespace).
           ARGO_TOKEN: "my-argo-token" 
+          ARGO_ENTRYPOINT: "my-entrypoint"
+          ARGO_PARAMETERS: ["param1=hello", "param2=123"]
+
 ```     
 
 ##### Example Output
@@ -30,7 +33,7 @@ To use this github action in your workflow, add a step like this:
 }
 ```
 
-## Inputs
+## Inputs ➡️
 
 | Name | Type | Description | Requried? | Default |
 | --- | --- | --- | --- | --- |
@@ -40,7 +43,6 @@ To use this github action in your workflow, add a step like this:
 | `ARGO_NAMESPACE` | String | The Argo namespace where your workflow template is hosted. Example: `<your-argo-namespace>` If your argo workflows server does not have a configured namespace the default is `argo`. | **No** | `argo` | 
 | `ARGO_ENTRYPOINT` | String | The entrypoint for your Argo Workflow Template. Example: `<your_entrypoint>` | **No** | `default` |
 | `ARGO_PARAMETERS` | Array[String] | An array of parameter strings to be passes to the Argo Workflows Template. Example: `["param1=hello", "param2=123"]` Syntax: `["<key>=<value>"]` | **No** | N/A |
-
 
 ## Request Body: JSON
 ```json
@@ -56,3 +58,37 @@ To use this github action in your workflow, add a step like this:
 }
 ```
 
+## All available input options and types
+
+```json
+{
+  "namespace": "default",
+  "resourceKind": "string",
+  "resourceName": "string",
+  "submitOptions": {
+    "annotations": "string",
+    "dryRun": true,
+    "entryPoint": "string",
+    "generateName": "string",
+    "labels": "string",
+    "name": "string",
+    "ownerReference": {
+      "apiVersion": "string",
+      "blockOwnerDeletion": true,
+      "controller": true,
+      "kind": "string",
+      "name": "string",
+      "uid": "string"
+    },
+    "parameters": [
+      "string"
+    ],
+    "podPriorityClassName": "string",
+    "priority": 0,
+    "serverDryRun": true,
+    "serviceAccount": "string"
+  }
+}  
+```
+
+## Outputs ⬅️
