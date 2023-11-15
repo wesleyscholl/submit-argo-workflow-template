@@ -3,7 +3,6 @@ import * as core from "@actions/core";
 import { mocked } from "jest-mock";
 
 // Mock the external dependencies
-jest.mock("@octokit/graphql");
 jest.mock("@actions/core");
 
 const mockedGetInput = mocked(core.getInput);
@@ -20,18 +19,24 @@ beforeEach(() => {
   }));
 });
 
-test("run function handles GraphQL error", async () => {
+test("run submit argo workflow", async () => {
   // Mock the input values
-  mockedGetInput.mockReturnValueOnce("{{ github.token }}");
-  mockedGetInput.mockReturnValueOnce("Test");
-  mockedGetInput.mockReturnValueOnce("5");
+  await mockedGetInput.mockReturnValueOnce("https://localhost:2746");
+  await mockedGetInput.mockReturnValueOnce("my-argo-workflow");
+  await mockedGetInput.mockReturnValueOnce("my-argo-namespace");
+  await mockedGetInput.mockReturnValueOnce("eyop...lrch");
+  await mockedGetInput.mockReturnValueOnce("my-entrypoint");
+  await mockedGetInput.mockReturnValueOnce('["param1=hello", "param2=123"]');
 
   // Run the `run` function
   await run();
 
   // Assertions
-  expect(mockedGetInput).toHaveBeenCalledTimes(3);
-  expect(mockedSetOutput).toHaveBeenCalledWith("token", "{{ github.token }}");
-  expect(mockedSetOutput).toHaveBeenCalledWith("output1", "Test");
-  expect(mockedSetOutput).toHaveBeenCalledWith("output2", "5");
+  await expect(mockedGetInput).toHaveBeenCalledTimes(6);
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoEntrypoint", "my-entrypoint");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoNamespace", "eyop...lrch");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoParameters", '["param1=hello", "param2=123"]');
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoTemplate", "my-argo-workflow");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoToken", "my-argo-namespace");
+  await expect(mockedSetOutput).toHaveBeenCalledWith("argoUrl", "https://localhost:2746");
 });
