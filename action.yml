@@ -1,0 +1,34 @@
+name: "Submit Argo Workflow Template GitHub Action 🗯️➡️🐙"
+description: "A GitHub Action for Submitting Argo Workflow Templates"
+author: "Wesley Scholl"
+
+runs:
+  using: "node16"
+  main: "dist/index.js"
+
+inputs:
+  ARGO_URL:
+    description: "The URL endpoint where your Argo Workflows instance is hosted. Example: https://<your_url>.com/argo."
+    required: true
+  ARGO_TEMPLATE:
+    description: "Argo workflow template name to be triggered. Syntax: <name-of-argo-template> (Example: argo-workflow-template) Ensure your workflow is already hosted on your argo workflows server, templates can be found under the templates tab in the Argo Workflows UI."
+    required: true
+  ARGO_TOKEN:
+    description: "The Argo Bearer Token which is passed in request authorization header. Example: Authorization: Bearer Token v2:eyop...lrch If your argo workflows server is configured with token authorization, a token is required to use this action."
+    required: false
+  ARGO_NAMESPACE:
+    description: "The Argo namespace where your workflow template is hosted. Example: <your-argo-namespace> If your argo workflows server does not have a configured namespace the default is argo."
+    required: false
+    default: "argo"
+  ARGO_ENTRYPOINT:
+    description: "The entrypoint for your Argo Workflow Template. Example: <your_entrypoint>"
+    required: false
+    default: "default"
+  ARGO_PARAMETERS:
+    description: 'An array of parameter strings to be passes to the Argo Workflows Template. Example: ["param1=hello", "param2=123"] Syntax: ["<key>=<value>"]'
+    required: false
+  
+
+branding:
+  icon: "arrow-up"
+  color: "blue"

@@ -1,6 +1,6 @@
-# Submit Argo Workflow Template 🗯️➡️🐙
+# Submit Argo Workflow Template GitHub Action 🗯️➡️🐙
 
-#### Submit an Argo workflow template from GitHub
+#### A GitHub Action for Submitting Argo Workflow Templates
 
 ## About
 

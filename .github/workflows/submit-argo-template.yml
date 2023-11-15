@@ -1,0 +1,25 @@
+name: Submit Argo Workflow Template GitHub Action
+
+# Could be triggered by multiple scenarios
+on: push
+
+jobs:
+  autorespond:
+    name: A GitHub Action for Submitting Argo Workflow Templates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Submit Argo Workflow Template GitHub Action
+        id: argotemplate
+        uses: ./
+        with:
+          ARGO_URL: "https://localhost:2746"
+          ARGO_TEMPLATE: "my-argo-workflow"
+          ARGO_NAMESPACE: "my-argo-namespace"
+          ARGO_TOKEN: "my-argo-token" 
+          ARGO_ENTRYPOINT: "my-entrypoint"
+          ARGO_PARAMETERS: ["param1=hello", "param2=123"]
+      - name: Show Output
+        run: |
+          echo "response = ${{ steps.argotemplate.outputs.response }}"
