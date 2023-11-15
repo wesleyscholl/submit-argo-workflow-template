@@ -135,6 +135,7 @@ To use this github action in your workflow, add a step like this:
 ## Credits 🏆
 
 - [Create and Publish a GitHub Action in Typescript - Leonardo Montini](https://leonardomontini.dev/typescript-github-action)
+- [Coverage Badge with GitHub Actions - FINALLY!](https://dev.to/thejaredwilcurt/coverage-badge-with-github-actions-finally-59fa)
 
 ### Inspired By 🤩
 
