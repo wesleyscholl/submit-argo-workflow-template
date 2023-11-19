@@ -34,6 +34,17 @@ export async function run() {
       console.log(error);
     });
 
+// Conditional to check for localhost/127 or domain url.
+// Consider renaming argoTemplate to argoTemplateName.
+// Conditional to check for argoToken and include in headers if present.
+// Handling for invalid urls and tokens
+// argoNamespace shoulf default to argo, if not use argoNamespace.
+// Conditional to check for argoEntrypoint, replace if present, default is default.
+// Come up with a way to check for, parse, and concatinate params into an array of strings.
+// Consider using one argoParam, make it an array of strings no matter the number of params.
+// Add http check for local env, use unauthorized urls if local, if not don't use.
+// Check other submission options for workflow templates.
+
   await setOutput("argoUrl", argoUrl);
   await setOutput("argoTemplate", argoTemplate);
   await setOutput("argoToken", argoToken);
