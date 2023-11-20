@@ -27,36 +27,49 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         const httpsAgent = new https_1.default.Agent({ rejectUnauthorized: false });
         const argoUrl = yield (0, core_1.getInput)("ARGO_URL");
+        if (!argoUrl.includes("localhost")) {
+            yield (0, core_1.setFailed)("argoUrl is missing or invalid.");
+            return;
+        }
         const argoTemplate = yield (0, core_1.getInput)("ARGO_TEMPLATE");
+        if (!(argoTemplate.length >= 5)) {
+            yield (0, core_1.setFailed)("argoTemplate is missing or invalid.");
+            return;
+        }
         const argoToken = yield (0, core_1.getInput)("ARGO_TOKEN");
         const argoNamespace = yield (0, core_1.getInput)("ARGO_NAMESPACE");
-        const argoEntrypoint = yield (0, core_1.getInput)("ARGO_ENTRYPOINT");
-        const argoParameter1 = yield (0, core_1.getInput)("ARGO_PARAMETER1");
-        const argoParameter2 = yield (0, core_1.getInput)("ARGO_PARAMETER2");
+        const argoSubmitOptions = yield JSON.parse((0, core_1.getInput)("ARGO_SUBMIT_OPTIONS"));
         yield axios_1.default
             .post(`${argoUrl}/api/v1/workflows/default/submit`, {
             namespace: argoNamespace,
             resourceKind: "WorkflowTemplate",
             resourceName: argoTemplate,
-            submitOptions: {
-                entryPoint: argoEntrypoint,
-                parameters: [argoParameter1, argoParameter2],
-            },
+            submitOptions: argoSubmitOptions,
         }, { httpsAgent })
             .then(function (response) {
             console.log(response.data);
             (0, core_1.setOutput)("argoOutputs", response.data);
         })
             .catch(function (error) {
-            console.log(error);
+            return __awaiter(this, void 0, void 0, function* () {
+                console.log(error);
+                yield (0, core_1.setFailed)("Http request error.");
+            });
         });
+        // Conditional to check for localhost/127 or domain url.
+        // Consider renaming argoTemplate to argoTemplateName.
+        // Conditional to check for argoToken and include in headers if present.
+        // Handling for invalid urls and tokens
+        // argoNamespace shoulf default to argo, if not use argoNamespace.
+        // Conditional to check for argoEntrypoint, replace if present, default is default.
+        // Come up with a way to check for, parse, and concatinate params into an array of strings.
+        // Add http check for local env, use unauthorized urls if local, if not don't use.
+        // Check other submission options for workflow templates.
         yield (0, core_1.setOutput)("argoUrl", argoUrl);
         yield (0, core_1.setOutput)("argoTemplate", argoTemplate);
         yield (0, core_1.setOutput)("argoToken", argoToken);
         yield (0, core_1.setOutput)("argoNamespace", argoNamespace);
-        yield (0, core_1.setOutput)("argoEntrypoint", argoEntrypoint);
-        yield (0, core_1.setOutput)("argoParameter1", argoParameter1);
-        yield (0, core_1.setOutput)("argoParameter2", argoParameter2);
+        yield (0, core_1.setOutput)("argoSubmitOptions", argoSubmitOptions);
     });
 }
 exports.run = run;
