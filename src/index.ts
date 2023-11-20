@@ -19,6 +19,7 @@ export async function run() {
         namespace: argoNamespace,
         resourceKind: "WorkflowTemplate",
         resourceName: argoTemplate,
+        // submitOptions should be the parameter to include entryPoint and parameters - type object
         submitOptions: {
           entryPoint: argoEntrypoint,
           parameters: [argoParameter1, argoParameter2],
