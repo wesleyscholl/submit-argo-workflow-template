@@ -19,7 +19,30 @@ export async function run() {
         namespace: argoNamespace,
         resourceKind: "WorkflowTemplate",
         resourceName: argoTemplate,
-        // submitOptions should be the parameter to include entryPoint and parameters - type object
+        // submitOptions should be the parameter to include entryPoint and all other parameters - type object
+        // "submitOptions": {
+        // "annotations": "string",
+        // "dryRun": true,
+        // "entryPoint": "string",
+        // "generateName": "string",
+        // "labels": "string",
+        // "name": "string",
+        // "ownerReference": {
+        //    "apiVersion": "string",
+        //    "blockOwnerDeletion": true,
+        //    "controller": true,
+        //    "kind": "string",
+        //    "name": "string",
+        //    "uid": "string"
+        //  },
+        //  "parameters": [
+        //    "string"
+        //  ],
+        // "podPriorityClassName": "string",
+        // "priority": 0,
+        // "serverDryRun": true,
+        // "serviceAccount": "string"
+        // }
         submitOptions: {
           entryPoint: argoEntrypoint,
           parameters: [argoParameter1, argoParameter2],
